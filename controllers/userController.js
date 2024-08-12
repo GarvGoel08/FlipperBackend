@@ -18,13 +18,7 @@ exports.signup = async (req, res) => {
       data: { name, email, password: hashedPassword },
     });
     const token = createToken(user.id);
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 3 * 24 * 3600000,
-      sameSite: "none",
-      secure: true,
-    });
-    res.status(201).json({ message: "User created", user });
+    res.status(201).json({ message: "User created", user, token });
   } catch (e) {
     if (e.code === "P2002" && e.meta && e.meta.target === "User_email_key") {
       res.status(400).json({ error: "Email already in use" });
@@ -45,23 +39,12 @@ exports.login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ error: "Incorrect password" });
 
     const token = createToken(user.id);
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 3 * 24 * 3600000,
-      sameSite: "none",
-      secure: true,
-    });
-    res.json({ message: "Logged in successfully" });
+    res.json({ message: "Logged in successfully", token });
   } catch (error) {
     res.status(400).json({ error: "Login failed" });
   }
 };
 
 exports.logout = (req, res) => {
-  res.cookie("token", "", { maxAge: 1 });
-  res.json({
-    message: "Logged out successfully",
-    sameSite: "none",
-    secure: true,
-  });
+  res.json({ message: "Logged out successfully" });
 };
