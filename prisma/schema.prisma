@@ -13,21 +13,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id        String     @id @default(uuid())
+  id        Int        @id @default(autoincrement())
   name      String
   email     String     @unique
   password  String
   createdAt DateTime   @default(now())
-  flipCards FlipCard[] @relation("UserFlipCards")
+  FlipCard  FlipCard[]
 }
 
 model FlipCard {
   id        Int      @id @default(autoincrement())
-  userId    String   
+  userId    Int
   question  String
   answer    String
-  user      User     @relation("UserFlipCards", fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
