@@ -5,7 +5,7 @@ const userRoutes = require('./routes/userRoutes');
 const flipCardRoutes = require('./routes/flipCardRouter');
 const cors = require('cors');
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://soft-sfogliatella-292982.netlify.app',
   credentials: true,
 };
 
