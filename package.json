@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "prisma generate && node index"
+    "build": "npx prisma format && npx prisma generate && node index"
   },
   "author": "",
   "license": "ISC",
