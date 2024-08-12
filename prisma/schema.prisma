@@ -25,7 +25,7 @@ model User {
 
 model FlipCard {
   id        Int      @id @default(autoincrement())
-  userId    String   // Changed from Int to String to match User's id type
+  userId    String   
   question  String
   answer    String
   user      User     @relation("UserFlipCards", fields: [userId], references: [id], onDelete: Cascade)
