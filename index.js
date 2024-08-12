@@ -4,10 +4,18 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes');
 const flipCardRoutes = require('./routes/flipCardRouter');
 const cors = require('cors');
+
+// Add 3 origin links in cors
+
 const corsOptions = {
-  origin: 'https://soft-sfogliatella-292982.netlify.app',
+  origin: ['http://localhost:3000', 'https://soft-sfogliatella-292982.netlify.app', 'https://flipper-cards-seven.vercel.app'],
   credentials: true,
 };
+
+// const corsOptions = {
+//   origin: 'https://soft-sfogliatella-292982.netlify.app',
+//   credentials: true,
+// };
 
 
 const app = express();
