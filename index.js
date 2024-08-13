@@ -7,16 +7,18 @@ const cors = require('cors');
 
 // Add 3 origin links in cors
 
-
-const app = express();
-
 const corsOptions = {
-    origin: ['https://frontend-one-sooty-63.vercel.app', 'https://frontend-devaryan77s-projects.vercel.app', 'https://frontend-git-master-devaryan77s-projects.vercel.app', 'http://localhost:3001'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+  origin: ['http://localhost:3000', 'https://soft-sfogliatella-292982.netlify.app', 'https://flipper-cards-seven.vercel.app'],
+  credentials: true,
 };
 
+// const corsOptions = {
+//   origin: 'https://soft-sfogliatella-292982.netlify.app',
+//   credentials: true,
+// };
+
+
+const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
